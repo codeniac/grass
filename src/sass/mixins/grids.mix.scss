@@ -1,0 +1,163 @@
+//##############################################################
+//	Wrap
+//##############################################################
+@mixin wrapper-fixed() {
+	margin-right: auto;
+	margin-left: auto;
+	padding-left:  ($grid-gap-horizontal / 2);
+	padding-right: ($grid-gap-horizontal / 2);
+	
+	@extend .clearfix;
+}
+
+//##############################################################
+//	Float Grid System (Based on Twitter Bootstrap grid system)
+//	http://getbootstrap.com
+//##############################################################
+
+// This mixin creates a grid.
+@mixin make-grid($gap: $grid-gap-horizontal) {
+	margin-left:  ($gap / -2);
+	margin-right: ($gap / -2);
+	@extend .clearfix;
+}
+
+// This mixin creates cell classes with general style.
+@mixin make-cells-general() {
+	@for $i from 1 through $grid-num-cells {
+		.cell-xsm-#{$i}, .cell-sm-#{$i}, .cell-md-#{$i}, .cell-lg-#{$i} {
+			position: relative;
+			min-height: 1px;
+			padding-left: ($grid-gap-horizontal / 2);
+			padding-right: ($grid-gap-horizontal / 2);
+		}
+	}
+}
+
+// This mixin creates a cell float style.
+@mixin make-cell-float($class) {
+	@for $i from 1 through $grid-num-cells {
+		.cell-#{$class}-#{$i} {
+			float: left;
+		}
+	}
+}
+
+// This mixin creates cell style.
+@mixin make-cell($class, $type, $index) {
+
+	@if $type == width {
+		.cell-#{$class}-#{$index} {
+			width: percentage(($index / $grid-num-cells));
+		}
+	} @else {
+		.cell-#{$class}-#{$type}-#{$index} {
+			@if $type == push {
+				left: percentage(($index / $grid-num-cells));
+			} @else if $type == pull {
+				right: percentage(($index / $grid-num-cells));
+			} @else if $type == offset {
+				margin-left: percentage(($index / $grid-num-cells));
+			}
+		}	
+	}
+}
+
+// This mixins is the entry point for creating grid cells.
+@mixin make-cells($class) {
+	@include make-cell-float($class);
+
+	@for $index from 1 through $grid-num-cells {
+		@include make-cell($class, width, $index);
+		@include make-cell($class, push, $index);
+		@include make-cell($class, pull, $index);
+		@include make-cell($class, offset, $index);
+	}
+}
+
+
+//##############################################################
+//	Flex Grid System (Based on Philip Walton grid system)
+//	http://philipwalton.github.io/solved-by-flexbox/
+//##############################################################
+@mixin display-flex() {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -moz-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+@mixin flex($grow: 1, $shrink: null, $basis: null) {
+	-webkit-box-flex: $grow;
+	-webkit-flex: $grow $shrink $basis;
+	-moz-box-flex: $grow;
+	-moz-flex: $grow $shrink $basis;
+	-ms-flex: $grow $shrink $basis;
+	flex: $grow $shrink $basis;
+}
+
+// Align items.
+@mixin align-flex-items($align) {
+	-webkit-align-items: $align;
+	-moz-align-items: $align;
+	align-items: $align;
+
+	@if $align == top {
+		-webkit-box-align: start;
+		-ms-flex-align: start;
+	} 
+	@else if $align == bottom {
+		-webkit-box-align: end;
+		-ms-flex-align: end;
+	}
+	@else {
+		-webkit-box-align: $align;
+		-ms-flex-align: $align;
+	}
+}
+
+// Align self.
+@mixin align-flex-self($align) { 
+	-webkit-align-self: $align;
+	-moz-align-self: $align;
+	align-self: $align;
+
+	@if $align == top {
+		-ms-flex-item-align: start;
+	} 
+	@else if $align == bottom {
+		-ms-flex-item-align: end;
+	}
+	@else {
+		-ms-flex-item-align: $align;
+	}
+}
+
+// Make flex row.
+@mixin make-grid-flex($gap: $grid-gap-horizontal) {
+	@include display-flex();
+	margin-left:  ($gap / -2);
+	margin-right: ($gap / -2);
+
+	@media(max-width: $screen-md-max) {
+		-webkit-box-direction: normal;
+		-moz-box-direction: normal;
+		-webkit-box-orient: vertical;
+		-moz-box-orient: vertical;
+		-webkit-flex-direction: column;
+		-ms-flex-direction: column;
+		flex-direction: column;
+	}
+}
+
+// Make flex cell.
+@mixin make-cell-flex() {
+	@include flex(1);
+
+	display: block;
+	padding-left: ($grid-gap-horizontal / 2);
+	padding-right: ($grid-gap-horizontal / 2);
+	width: 100%;
+}

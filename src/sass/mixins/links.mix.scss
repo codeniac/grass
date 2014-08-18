@@ -1,0 +1,11 @@
+// This mixin sets a link as a normal text (remove all link style except for the
+// underline tex-decoration on hover).
+@mixin link-unstyled() {
+	color: inherit;
+	text-decoration: none;
+
+	&:hover {
+		color: inherit;
+		text-decoration: underline;
+	}
+}

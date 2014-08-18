@@ -1,0 +1,85 @@
+.wrapper {
+	@include wrapper-fixed();
+
+	@media (min-width: $screen-sm-min) {
+		width: $wrapper-sm;
+	}
+	@media (min-width: $screen-md-min) {
+		width: $wrapper-md;
+	}
+	@media (min-width: $screen-lg-min) {
+		width: $wrapper-lg;
+	}
+}
+
+
+//##############################################################
+//	Float Grid System
+//##############################################################
+
+// Create the grid class.
+.grid {
+	@include make-grid();
+}
+
+.grid + .grid {
+	margin-top: $grid-gap-vertical;
+}
+
+// Common styles for grid cells
+@include make-cells-general();
+
+// Create screen specific cell classes.
+@include make-cells(xsm);
+
+@media(min-width: $screen-sm-min) {
+	@include make-cells(sm);
+}
+
+@media(min-width: $screen-md-min) {
+	@include make-cells(md);
+}
+
+@media(min-width: $screen-lg-min) {
+	@include make-cells(lg);
+}
+
+
+//##############################################################
+//	Flex Grid System
+//##############################################################
+// Flex grid
+.grid-flex {
+	@include make-grid-flex();
+}
+
+// Flex grid alignments
+.grid-flex-top {
+	@include align-flex-items(top);
+}
+
+.grid-flex-center {
+	@include align-flex-items(center);
+}
+
+.grid-flex-bottom {
+	@include align-flex-items(bottom);
+}
+
+// Flex cell
+.cell {
+	@include make-cell-flex();
+}
+
+// Flex cell alignments
+.cell-top {
+	@include align-flex-self(top);
+}
+
+.cell-center {
+	@include align-flex-self(center);
+}
+
+.cell-bottom {
+	@include align-flex-self(bottom);
+}

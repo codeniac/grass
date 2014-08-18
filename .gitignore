@@ -1,0 +1,17 @@
+## MAC OS X
+.DS_Store
+
+## Hidden Folders
+.sass-cache
+
+## Node Modules
+node_modules
+
+## Local Files
+TODO.md
+
+## WWW Test Dir
+www/vendor
+www/.bower-cache
+www/.bower-registry
+www/.bower-tmp

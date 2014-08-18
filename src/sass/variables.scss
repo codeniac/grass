@@ -1,0 +1,99 @@
+//??????????????????????????????????????????????????????????????
+//??????????????????????????????????????????????????????????????
+//	This file defines variables used for configure the whole
+//	project.
+//??????????????????????????????????????????????????????????????
+//??????????????????????????????????????????????????????????????
+
+//##############################################################
+//	General Variables
+//##############################################################
+$body-bg:										$color-light;
+$body-color:									$color-dark;
+$body-align:									justify;
+
+//##############################################################
+//	Typography
+//##############################################################
+// Font Families
+$font-family-sans-serif:						"Helvetica Neue", "Roboto", Helvetica, Arial, sans-serif !default;
+$font-family:									$font-family-sans-serif !default;
+
+// Font Weight
+$font-weight:									300 !default;
+
+// Font Sizes
+$font-size:										16px !default;
+$font-size-lg:									ceil($font-size * 1.25) !default; 	// 20px
+$font-size-sm:									ceil($font-size * 0.85) !default; 	// 14px
+$font-size-xsm: 								ceil($font-size * 0.75) !default; 	// 12px
+
+// Line Height
+$line-height:									2 !default;
+$line-height-size:								floor($font-size * $line-height) !default;	// 32px
+
+//##############################################################
+//	Headings
+//##############################################################
+$heading-font-family:							inherit !default;
+
+$heading-font-weight:							100 !default;
+
+$heading-line-height: 							1.5 !default;
+
+$heading-color: 								inherit !default;
+
+// Header
+$header-line-color: 							#ccc;
+
+//##############################################################
+//	Links
+//##############################################################
+$link-color: 									$color-moody !default;
+$link-color-hover:								darken($link-color, 15%) !default;
+
+//##############################################################
+//	Sections
+//##############################################################
+$section-gap-size:								40px;
+
+//##############################################################
+//	Screen Breakpoints
+//##############################################################
+$screen-xsm: 									480px !default;
+$screen-xsm-min: 								$screen-xsm !default;
+$screen-phone: 									$screen-xsm-min !default;
+
+$screen-sm: 									768px !default;
+$screen-sm-min: 								$screen-sm !default;
+$screen-tablet: 								$screen-sm-min !default;
+
+$screen-md: 									992px !default;
+$screen-md-min: 								$screen-md !default;
+$screen-desktop: 								$screen-md-min !default;
+	
+$screen-lg: 									1200px !default;
+$screen-lg-min: 								$screen-lg !default;
+$screen-desktop-lg: 							$screen-lg-min !default;
+
+// Max widths
+$screen-xsm-max: 								($screen-sm-min - 1) !default;
+$screen-sm-max: 								($screen-md-min - 1) !default;
+$screen-md-max: 								($screen-lg-min - 1) !default;
+
+//##############################################################
+//	Grids
+//##############################################################
+$grid-num-cells: 								12 !default;
+$grid-gap-horizontal:							30px !default;
+$grid-gap-vertical:								20px !default;
+
+// Grid Wrappers
+$wrapper-sm: 									(720px + $grid-gap-horizontal) !default;
+$wrapper-tabled:								$wrapper-sm !default;
+
+$wrapper-md:									(940px + $grid-gap-horizontal) !default;
+$wrapper-desktop:								$wrapper-md !default;
+
+$wrapper-lg:									(1140px + $grid-gap-horizontal) !default;
+$wrapper-desktop-lg: 							$wrapper-lg;
