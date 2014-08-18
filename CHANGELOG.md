@@ -1,3 +1,6 @@
+# Version 0.0.2
+* Add an ignore meta tag in bower to ignore www folder in production.
+
 # Version 0.0.1
 * Add general text/heading styles.
 * Add link-unstyled.
